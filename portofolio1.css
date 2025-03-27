@@ -1,0 +1,1114 @@
+* {
+    margin: 0;
+    /* --> Mengatur semua elemen HTML memiliki margin 0 (menghilangkan jarak luar default dari elemen). */
+
+    padding: 0;
+    /* --> Mengatur semua elemen HTML memiliki padding 0 (menghilangkan jarak dalam default dari elemen). */
+
+    box-sizing: border-box;
+    /* --> Mengatur properti `box-sizing` menjadi `border-box`, 
+           sehingga padding dan border elemen dihitung dalam ukuran total elemen (width dan height). */
+
+    text-decoration: none;
+    /* --> Menghapus dekorasi teks default (seperti garis bawah pada link <a>). */
+
+    border: none;
+    /* --> Menghilangkan border default pada elemen seperti input atau tombol. */
+
+    outline: none;
+    /* --> Menghilangkan outline (garis tepi fokus) pada elemen seperti input atau tombol saat mereka fokus. */
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* --> Mengatur font default untuk semua elemen menjadi 'Segoe UI' (prioritas pertama),
+           atau font fallback seperti Tahoma, Geneva, Verdana, atau sans-serif jika font utama tidak tersedia. */
+}
+
+
+
+
+:root {
+    --warna1:#16423C;
+    --warna2:#6A9C89;
+    --warna3:#C4DAD2;
+    --warna4:#E9EFEC;
+    --warna5:#FFB22C; 
+}
+
+
+html {
+    font-size: 20px;
+}
+body {
+    color: var(--warna4);
+}
+
+
+
+header {
+    position: fixed;
+    /* --> Menetapkan posisi elemen header sebagai `fixed`, 
+           sehingga header tetap berada di tempatnya (di bagian atas) saat halaman di-scroll. */
+
+    top: 0;
+    /* --> Mengatur posisi elemen header berada di atas halaman (0 pixel dari bagian atas). */
+
+    left: 0;
+    /* --> Mengatur posisi elemen header berada di sisi kiri halaman (0 pixel dari tepi kiri). */
+
+    width: 100%;
+    /* --> Membuat lebar elemen header sebesar 100% dari lebar layar perangkat. */
+
+    padding: 2rem 9%;
+    /* --> Memberikan ruang di dalam elemen header.
+           - `2rem` adalah jarak vertikal (atas dan bawah).
+           - `9%` adalah jarak horizontal (kiri dan kanan) relatif terhadap lebar layar. */
+
+    background-color: var(--warna1);
+    /* --> Memberikan warna latar belakang pada header menggunakan variabel CSS `--warna1`.
+           Variabel ini biasanya didefinisikan sebelumnya di kode CSS. */
+
+    display: flex;
+    /* --> Menggunakan model layout `flexbox` untuk elemen di dalam header.
+           Flexbox memudahkan pengaturan tata letak elemen secara horizontal atau vertikal. */
+
+    justify-content: space-between;
+    /* --> Mengatur elemen di dalam header berjauhan secara horizontal, 
+           dengan elemen pertama di sisi kiri dan elemen terakhir di sisi kanan. */
+
+    align-items: center;
+    /* --> Mengatur elemen di dalam header sejajar secara vertikal (di tengah). */
+
+    z-index: 100;
+    /* --> Menetapkan lapisan (layer) header berada di atas elemen lain.
+           Nilai `100` adalah prioritas tinggi, sehingga header tidak akan tertutup elemen lain. */
+
+    visibility: hidden;
+    /* --> Menyembunyikan elemen header secara visual (tidak terlihat di layar),
+           tetapi elemen ini tetap ada di dokumen HTML. */
+
+    opacity: 0;
+    /* --> Mengatur tingkat transparansi elemen menjadi 0 (sepenuhnya transparan).
+           Dikombinasikan dengan `visibility: hidden`, ini membuat header tidak terlihat sama sekali. */
+}
+
+
+
+
+
+header.active {
+    animation: show-header 1.5s linear forwards;
+    /* --> Menambahkan animasi bernama `show-header` pada elemen dengan class `header active`.
+           - `1.5s`: Durasi animasi adalah 1,5 detik.
+           - `linear`: Kecepatan animasi berjalan dengan kecepatan yang sama sepanjang waktu.
+           - `forwards`: Setelah animasi selesai, elemen akan mempertahankan nilai akhir animasi. */
+    animation-delay: 1.2s;
+    /* --> Memberikan jeda waktu selama 1,2 detik sebelum animasi `show-header` mulai berjalan. */
+}
+@keyframes show-header {
+    /* --> Mendefinisikan animasi kustom bernama `show-header`. */
+    100% {
+        visibility: visible;
+        /* --> Pada 100% (akhir animasi), elemen menjadi terlihat (visibility: visible). */
+        opacity: 1;
+        /* --> Pada 100% (akhir animasi), elemen sepenuhnya terlihat dengan tingkat transparansi 100% (opacity: 1). */
+    }
+}
+
+
+
+
+.logo {
+    font-size: 3rem;
+    /* --> Mengatur ukuran font pada elemen dengan class `.logo` menjadi 3rem.
+           - 1rem setara dengan ukuran font pada elemen `<html>` (misalnya 20px).
+           - Jadi, 3rem = 3 * 20px = 60px (jika ukuran font root adalah 20px). */
+    color: var(--warna4);
+    /* --> Mengatur warna teks pada elemen `.logo` menggunakan variabel CSS `--warna4`.
+           - Variabel ini harus didefinisikan sebelumnya, misalnya: 
+             :root { --warna4: #333; } */
+    font-weight: 700;
+    /* --> Mengatur ketebalan font menjadi `700`, yang biasanya membuat teks tebal (bold). */
+
+    /* margin-left: 50px; */
+    /* --> Memberikan jarak di sebelah kiri elemen `.logo` sebesar 50px.
+           - Kode ini dikomentari, jadi tidak akan diterapkan kecuali diaktifkan kembali. */
+}
+
+
+
+
+nav a {
+    font-size: 2rem;
+    /* --> Mengatur ukuran font pada elemen `<a>` di dalam `<nav>` menjadi 2rem.
+           - Dengan font root 20px, ini berarti 2rem = 2 * 20px = 40px. */
+    color: var(--warna4);
+    /* --> Mengatur warna teks pada link `<a>` di dalam `<nav>` menggunakan variabel CSS `--warna4`. */
+    font-weight: 500;
+    /* --> Mengatur ketebalan font pada elemen `<a>` menjadi `500`, yaitu ketebalan sedang. */
+    margin-left: 3.5rem;
+    /* --> Memberikan jarak di sebelah kiri setiap elemen `<a>` di dalam `<nav>` sebesar 3.5rem (3.5 * ukuran font root). */
+    transition: 0.5s;
+    /* --> Menambahkan efek transisi selama 0.5 detik pada properti yang berubah (seperti warna, margin, atau dekorasi) 
+           saat elemen di-hover atau diubah dengan cara lain. */
+}
+
+
+
+nav a:hover, nav a.active {
+    color: var(--warna5);
+    /* --> Mengatur warna teks pada elemen `<a>` di dalam `<nav>` menjadi warna dari variabel CSS `--warna5`
+           - Ini berlaku untuk dua kondisi:
+             1. Saat pengguna mengarahkan kursor (hover) pada elemen `<a>`.
+             2. Saat elemen `<a>` memiliki class `active`, biasanya menunjukkan bahwa elemen tersebut adalah halaman atau bagian yang sedang aktif. */
+}
+
+
+
+
+
+
+#menu-icon {
+    font-size: 4rem;
+    /* --> Mengatur ukuran font dari elemen dengan ID `menu-icon` menjadi 4rem.
+           - Dengan root font-size default (misalnya 20px), 4rem berarti 4 * 20px = 80px. */
+
+    display: none;
+    /* --> Menyembunyikan elemen dengan ID `menu-icon` dari tampilan. */
+}
+
+.bars-box {
+    position: absolute;
+    /* --> Menetapkan elemen `.bars-box` sebagai elemen dengan posisi absolut relatif terhadap elemen induknya.
+           - Elemen ini dapat ditempatkan secara spesifik berdasarkan properti seperti `top`, `left`, dll. */
+
+    width: 100%;
+    /* --> Mengatur lebar elemen `.bars-box` menjadi 100% dari elemen induknya. */
+
+    height: 100%;
+    /* --> Mengatur tinggi elemen `.bars-box` menjadi 100% dari elemen induknya. */
+
+    display: flex;
+    /* --> Menampilkan elemen `.bars-box` sebagai container fleksibel.
+           - Elemen di dalamnya akan disusun menggunakan aturan flexbox. */
+}
+
+.bars-box .bar {
+    width: 100%;
+    /* --> Mengatur setiap elemen `.bar` di dalam `.bars-box` untuk mengambil 100% lebar dari kontainer induknya. */
+
+    height: 100%;
+    /* --> Mengatur tinggi setiap elemen `.bar` menjadi 100% dari kontainer induknya. */
+
+    background: var(--warna1);
+    /* --> Memberikan warna latar belakang pada setiap elemen `.bar` menggunakan variabel CSS `--warna1`.
+           - Variabel ini harus didefinisikan sebelumnya, misalnya:
+             :root { --warna1: #000; } */
+
+    animation: hide-bars 0.5s ease-in-out both;
+    /* --> Menambahkan animasi bernama `hide-bars` pada elemen `.bar`.
+           - Durasi animasi: 0.5 detik.
+           - Transisi dengan kecepatan `ease-in-out` (perlahan di awal dan akhir).
+           - Kata kunci `both`: Menerapkan nilai awal dan akhir animasi, bahkan jika animasi belum berjalan atau sudah selesai. */
+
+    animation-delay: calc(0.1s * var(--i));
+    /* --> Memberikan penundaan waktu animasi berdasarkan perhitungan.
+           - `var(--i)` adalah variabel kustom yang digunakan untuk menentukan urutan setiap `.bar`.
+           - Penundaan dihitung sebagai `0.1 detik` dikalikan dengan nilai `var(--i)`, memungkinkan setiap elemen `.bar` memiliki jeda animasi yang unik. */
+}
+
+
+@keyframes hide-bars {
+    /* --> Mendefinisikan animasi kustom bernama `hide-bars`. 
+           - Animasi ini akan digunakan untuk mengubah posisi elemen secara vertikal. */
+
+    0% {
+        transform: translateY(0);
+        /* --> Pada tahap awal animasi (0%), elemen berada di posisi aslinya dengan `translateY(0)` 
+               - Tidak ada perpindahan vertikal. */
+    }
+
+    100% {
+        transform: translateY(-100%);
+        /* --> Pada tahap akhir animasi (100%), elemen dipindahkan ke atas (ke arah negatif sumbu Y) sebesar 100% dari tinggi elemen.
+               - Elemen sepenuhnya keluar dari area tampilan jika tinggi kontainer sama dengan tinggi elemen. */
+    }
+}
+
+
+
+.bars-box.active .bar {
+    animation: show-bars 0.5s ease-in-out both;
+    /* --> Menambahkan animasi bernama `show-bars` pada elemen `.bar` di dalam `.bars-box` yang memiliki class `active`.
+           - Durasi animasi adalah 0.5 detik.
+           - `ease-in-out`: Animasi dimulai dan berakhir secara halus.
+           - `both`: Elemen akan mempertahankan nilai awal dan akhir animasi setelah selesai. */
+
+    animation-delay: calc(0.1s * var(--i));
+    /* --> Memberikan jeda waktu animasi berdasarkan perhitungan:
+           - `calc(0.1s * var(--i))` menghitung penundaan berdasarkan nilai variabel CSS `--i`.
+           - Variabel ini biasanya ditentukan pada elemen `.bar` (misalnya `style="--i: 1;"`) untuk membuat animasi berurutan. */
+}
+
+@keyframes show-bars {
+    /* --> Mendefinisikan animasi kustom bernama `show-bars`. */
+
+    0% {
+        transform: translateY(-100%);
+        /* --> Pada awal animasi (0%), elemen berada di luar layar bagian atas (digeser ke atas sebesar 100% tinggi elemen). */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* --> Pada akhir animasi (100%), elemen kembali ke posisi aslinya tanpa pergeseran (translateY(0)). */
+    }
+}
+
+
+
+
+
+section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10rem 9% 2rem;
+
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+}
+
+section.active {
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.6s;
+}
+
+@keyframes show-content {
+    100%{
+        visibility: visible;
+        opacity: 1;
+        overflow: auto;
+    }
+}
+
+
+
+.home {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.home-detail h1 {
+    font-size: 5rem  ;
+}
+
+.home-detail h2 {
+    display: inline-block;
+    font-size: 2rem;
+    margin-top: -1rem;
+}
+
+.home-detail h2 span {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 0.07rem var(--warna5);
+    animation: display-text 16s linear infinite;
+    animation-delay: calc(-4s * var(--i));
+}
+
+@keyframes display-text {
+    25%,100% {
+        display: none;
+    }
+}
+
+
+
+.home-detail h2 span::before {
+    content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: 0.2rem solid var(--warna5);
+    color: var(--warna5);
+    white-space:nowrap ;
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+@keyframes fill-text {
+    10%,100% {
+        width: 0;
+    }
+    70%,90% {
+        width: 100%;
+    }
+}
+
+
+
+.home-detail p {
+    font-size: 1rem;
+    margin: 5px;
+    text-align: justify;
+}
+
+.home-detail .btn-sci {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.5rem 50px;
+    background: var(--warna5);
+    border: 2px solid var(--warna3);
+    border-radius: 20rem;
+    box-shadow: 0 0 2rem var(--warna5);
+    font-size: 1.5rem;
+    color: var(--warna1);
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--warna5);
+    box-shadow: none;
+}
+
+.home-detail .btn-sci .sci {
+    margin-left: 30px;
+}
+
+.home-detail .btn-sci .sci a {
+    display: inline-flex;
+    padding: 10px;
+    border: 2px solid var(--warna5);
+    border-radius: 50%;
+    color: var(--warna5);
+    margin: 8px;
+    transition: 0.5s;
+}
+
+.home-detail .btn-sci .sci a:hover {
+    background: var(--warna5);
+    color: var(--warna1);
+    box-shadow: 0 0 1rem var(--warna5);
+}
+
+.home-img .img-box {
+    position: relative;
+    width: 32vw;
+    height: 32vw;
+    border-radius: 50%;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.home-img .img-box::before, .home-img .img-box::after {
+    content: '';
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    background: linear-gradient(transparent, transparent, transparent, var(--warna5));
+    transform: rotate(0deg);
+    animation: rotate-border 9s linear infinite;
+}
+
+.home-img .img-box::after {
+    animation-delay: -5s;
+}
+
+
+@keyframes rotate-border {
+    100% {
+        transform: rotate(300deg);
+    }
+}
+
+
+.home-img .img-box .img-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--warna1);
+    border-radius: 50%; /* Membuat elemen berbentuk lingkaran */
+    border: 0.01rem solid var(--warna1);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Menyelaraskan gambar di tengah */
+    z-index: 1;
+    overflow: hidden; /* Memastikan gambar tidak keluar dari lingkaran */
+}
+
+.home-img .img-box .img-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Mengisi seluruh elemen lingkaran */
+    height: 100%; /* Mengisi seluruh elemen lingkaran */
+    object-fit: cover; /* Membuat gambar menyesuaikan tanpa distorsi */
+    /* mix-blend-mode: lighten; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ini bagian pendidikan */
+.heading {
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.heading span {
+    color: var(--warna5);
+}
+
+.pendidikan-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    gap: 2rem;
+}
+
+.pendidikan-container .pendidikan-box {
+    padding: 3rem 2.5rem;
+    background: var(--warna2);
+    border: 0.2rem solid var(--warna2);
+    border-radius: 1rem;
+    transition: 0.5s;
+}
+
+.pendidikan-container .pendidikan-box:hover {
+    border-color: var(--warna5);
+    transform: scale(1.02);
+}
+
+.pendidikan-box .icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pendidikan-box .icon i {
+    font-size: 3.5rem;
+    transition: 0.5s;
+}
+
+.pendidikan-box:hover .icon :not(a i) {
+    color: var(--warna5);
+}
+
+
+.pendidikan-box .icon a {
+    display: inline-block;
+    background: var(--warna4);
+    border-radius: 50%;
+    padding: 1rem;
+    transition: 0.5s;
+}
+.pendidikan-box .icon a i {
+    font-size: 3rem;
+    color: var(--warna1);
+    transform: rotate(225deg);
+   
+}
+
+.pendidikan-box .icon a:hover i {
+    transform: rotate(180deg);
+}
+
+
+
+.pendidikan-box:hover .icon a {
+    background: var(--warna5);
+}
+
+
+.pendidikan-box h3 {
+    font-size: 3rem;
+    margin: 0.5rem 0 2rem;
+    transition: 0.5s;
+}
+
+.pendidikan-box:hover h3 {
+    color: var(--warna5);
+}
+
+.pendidikan-box p {
+    font-size: 1.6rem;
+    text-align: justify;
+    
+}
+
+
+
+
+/* ini bagian pengalaman */
+.pengalaman-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+}
+
+.pengalaman-box h2 {
+    font-size: 4.5rem;
+}
+
+.pengalaman-box p {
+    font-size: 1.6rem;
+}
+
+.pengalaman-box .desc {
+    margin: 2rem 0 2.5rem;
+    text-align: justify;
+}
+
+.pengalaman-box .pengalaman-btn{
+    width: 100%;
+    height: 5.3rem;
+    background: var(--warna3);
+    border: 0.2rem solid var(--warna3);
+    font-size: 1.6rem;
+    color: var(--warna1);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.pengalaman-box .pengalaman-btn.active {
+    border-color: var(--warna5);
+    color: var(--warna5);
+}
+
+.pengalaman-detail {
+    display: none;
+}
+
+
+.pengalaman-detail.active {
+    display: block;
+}
+
+.pengalaman-box .heading {
+    font-size: 3.5rem;
+    text-align : left;
+}
+
+.pengalaman-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    gap: 6rem;
+    height: 45rem;
+    overflow: auto;
+}
+
+.pengalaman-list::-webkit-scrollbar {
+    width: 0.7rem;
+}
+
+.pengalaman-list::-webkit-scrollbar-thumb {
+    background:transparent;
+    border-radius: 3rem;
+}
+
+.pengalaman-list:hover::-webkit-scrollbar-thumb {
+    background: var(--warna5);
+}
+
+
+
+
+
+.pengalaman-list .pengalaman-item {
+    background: var(--warna2);
+    border-radius: 0.8rem;
+    padding: 3rem 2.5rem;
+    height: calc((45rem -2rem)/ 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+}
+.pengalaman-item .year {
+    color: var(--warna1);
+}
+
+.pengalaman-item h3 {
+    font-size: 2.2rem;
+}
+
+.pengalaman-item .company {
+    position: relative;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.pengalaman-item .company::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+    background: var(--warna5);
+    border-radius: 50%;
+    margin-left: -2rem;
+}
+
+
+
+.pengalaman-detail.skill .pengalaman-list {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    height: auto;
+    overflow: visible;
+}
+
+.pengalaman-detail.skill .pengalaman-item {
+    position: relative;
+    align-items: center;
+    height: auto;
+}
+
+.pengalaman-detail.skill .pengalaman-item  i {
+    font-size: 8.5rem;
+    transition: 0.5s;
+}
+.pengalaman-detail.skill .pengalaman-item:hover {
+    color: var(--warna5);
+}
+
+.pengalaman-detail.skill .pengalaman-item span {
+    position: absolute;
+    top: -20%;
+    background: var(--warna4);
+    color: var(--warna1);
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: 0.2s;
+}
+
+.pengalaman-detail.skill .pengalaman-item:hover span {
+    top: -25%;
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+
+
+
+.pengalaman-detail.about .pengalaman-list {
+    height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+
+.pengalaman-detail.about .pengalaman-item {
+    height: auto;
+    padding: 0 0 0.5rem;
+    background: transparent;
+}
+
+.pengalaman-detail.about .pengalaman-item p {
+    color: var(--warna5);
+}
+
+.pengalaman-detail.about .pengalaman-item p span {
+    color: var(--warna4);
+    margin-left: 1rem;
+    font-size: 1.8rem;
+
+}
+
+
+
+/* ini bagian dokumentasi */
+.dokumentasi-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+
+.dokumentasi-detail {
+    display: none;
+}
+
+.dokumentasi-detail.active {
+    display: block;
+
+}
+
+
+.dokumentasi-box .numb {
+    font-size: 8rem;
+    -webkit-text-stroke: 0.07rem var(--warna4);
+    color: transparent;
+    line-height: 1;
+}
+
+.dokumentasi-box h3 {
+    font-size: 3.5rem;
+    margin: 0.8rem 0 2rem;
+}
+
+.dokumentasi-box p {
+    font-size: 1.6rem;
+    text-align: justify;
+}
+
+.dokumentasi-box .tech {
+    margin: 2rem 0;
+    color: var(--warna5);
+    border-bottom: 0.1rem solid var(--warna4);
+    padding-bottom: 2rem;
+}
+
+
+.dokumentasi-box .live-github a {
+    position: relative;
+    display: inline-block;
+    width: 4rem; /* Tentukan ukuran lingkaran */
+    height: 4rem; /* Sama dengan lebar untuk memastikan lingkaran sempurna */
+    line-height: 4rem; /* Pastikan teks vertikal berada di tengah */
+    text-align: center; /* Teks di tengah secara horizontal */
+    font-size: 2rem;
+    color: var(--warna4);
+    border-radius: 50%;
+    background: var(--warna2);
+    transition: 0.5s;
+}
+
+
+.dokumentasi-box .live-github a:hover {
+    color: var(--warna5);
+}
+
+
+
+.dokumentasi-box .live-github a:first-child {
+    margin-right: 1.5rem;
+}
+
+.dokumentasi-box .live-github a:first-child i {
+    transform: rotate(135deg);
+}
+
+.dokumentasi-box .live-github a span {
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translate(-50%) scale(0.9);
+    font-size: 1.rem;
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    pointer-events: none;
+    background: var(--warna4);
+    color: var(--warna1);
+    opacity: 0;
+    scale: 0.9;
+    transition: 0.2s;
+}
+
+.dokumentasi-box .live-github a:hover span {
+    top: 100%;
+    opacity: 1;
+    transform: translate(-50%) scale(0.9);
+}
+
+
+.dokumentasi-box .dokumentasi-carousel {
+    width: 100%;
+    height: 45rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    /* agar gambar berada dalam kotak saja */
+}
+
+.dokumentasi-carousel .img-slide {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 2rem;
+    height: inherit;
+    transition: 0.5s;
+}
+
+.dokumentasi-carousel .img-item {
+    height: inherit;
+}
+
+.dokumentasi-carousel .img-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.dokumentasi-box .navigation {
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.dokumentasi-box .navigation button {
+    display: inline-block;
+    padding: .4rem;
+    background: var(--warna3);
+    border: .2rem solid var(--warna5);
+    border-radius: .6rem;
+    font-size: 4rem;
+    color: var(--warna5);
+    cursor: pointer;
+}
+
+.dokumentasi-box .navigation button.disabled {
+    border-color: var(--warna3);
+    color: var(--disabled-color);
+}
+
+.dokumentasi-box .navigation .arrow-right {
+    margin-left: 1.5rem;
+}
+
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+}
+
+.contact-container .contact-box:first-child {
+    align-self: center;
+}
+
+.contact-box h2 {
+    font-size: 4.5rem;
+}
+.contact-box p {
+    font-size: 1.6rem;
+}
+.contact-box .desc {
+    margin: 1.5rem 0 2.5rem;
+}
+
+.contact-box .contact-detail {
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+}
+
+.contact-detail i {
+    display: inline-block;
+    background: var(--warna3);
+    color: var(--warna5);
+    font-size: 3rem;
+    padding: 3.2rem;
+    border-radius: 0.6rem;
+    margin-right: 1.5rem;
+}
+
+.contact-detail .detail p:first-child {
+    color: var(--warna5);
+}
+
+.contact-box form {
+    background: var(--warna2);
+    padding: 2.5rem 3.5rem 3.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.contact-box .heading {
+    font-size: 3.5rem;
+}
+
+.contact-box .field-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.contact-box .field-box input,
+.contact-box .field-box textarea {
+    padding: 1.5rem;
+    background: var(--warna1);
+    border: 0.15rem solid var(--warna1);
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    color: var(--warna4);
+}
+
+.contact-box .field-box textarea {
+    grid-column: 1 /-1;
+    height: 26rem;
+    resize: none;
+}
+
+.contact-box .field-box input:focus,
+.contact-box .field-box textarea:focus {
+    border-color: var(--warna5);
+}
+
+.contact-box .btn {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* breakpoint */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    header {
+        padding: 2rem;
+    }
+
+    section {
+        padding: 10rem 4% 2rem;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .contact-box .field-box {
+        grid-template-columns: 1fr ;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background: var(--warna1);
+        border-top:  0.1rem solid rgb(0, 0, 2);
+        box-shadow: 0 0.5rem 1rem rgb(0, 0, 2);
+        text-align: center;
+        display: none;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+
+    nav a {
+        display: block;
+        margin: 4rem 0;
+    }
+
+    .home {
+        flex-direction:  column-reverse;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .home-img .img-box {
+        width: 35rem;
+        height: 35rem;
+    }
+
+    .pengalaman-container, .dokumentasi-container, .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .pengalaman-container {
+        gap: 3rem;
+    }
+
+    .dokumentasi-container .dokumentasi-box:first-child {
+        order: 1;
+    }
+
+    .contact-box .field-box {
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width :600px) {
+    .home-img .img-box {
+        width: 30rem;
+        height: 30rem;
+    }
+
+    .contact-box .field-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width :450px) {
+    html {
+        font-size: 50%;
+
+    }
+}
+
+@media screen and (max-width :400px) {
+    .home-detail, .pengalaman-box h2, .pengalaman-box .heading, .pengalaman-box .desc, .pengalaman-detail.about .pengalaman-item {
+        text-align: center;
+    }
+
+    .home-detail .btn-sci {
+        flex-direction: column-reverse;
+    }
+
+    .home-detail .btn-sci .sci {
+        margin-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    .contact-box form {
+        padding: 2.5rem 3rem 3.5rem;
+    }
+
+    .contact-box h2 {
+        font-size: 3.5rem;
+    }
+}
